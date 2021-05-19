@@ -16,6 +16,7 @@
 <body>
     <div id="root">
         <div>
+            <!-- <h2>{{newToDo.testo}}</h2> -->
             <input type="text" placeholder="Inserisci un nuovo toDo" v-model="newToDo.testo" @keydown.enter="addToDo">
             <button @click="addToDo">Aggiungi</button>
         </div>

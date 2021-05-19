@@ -31,9 +31,9 @@ var app = new Vue (
                     completed: false,
                 },
             ],
+
             newToDo: {
                 testo:"",
-                completed: false,
             },
         },
         methods: {
@@ -42,18 +42,16 @@ var app = new Vue (
                 this.toDoList.splice(indexToRemove, 1);
             },
             addToDo: function () {
-                // console.log("chiamata alla funzione addToDo");
+                console.log("richiamo funzione add");
                 if (this.newToDo.testo.trim().length > 0) {
-                    this.toDoList.push(this.newToDo);
-                }
-                this.newToDo.testo = "";
-            },
-            keydownFunction: function (event) {
-                // console.log(event.keyCode, event.key);
-                if (event.keyCode == 13 && this.newToDo.trim().length > 0) {
-                    this.addToDo();
+                    this.toDoList.push({
+                        testo: this.newToDo.testo,
+                        completed: false
+                    });
+                    this.newToDo.testo = "";
                 }
             },
+            
         }
     }
 );
