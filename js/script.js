@@ -32,9 +32,7 @@ var app = new Vue (
                 },
             ],
 
-            newToDo: {
-                testo:"",
-            },
+            newToDo: "",
         },
         methods: {
             removeToDo: function(indexToRemove) {
@@ -43,13 +41,30 @@ var app = new Vue (
             },
             addToDo: function () {
                 console.log("richiamo funzione add");
-                if (this.newToDo.testo.trim().length > 0) {
-                    this.toDoList.push({
-                        testo: this.newToDo.testo,
-                        completed: false
-                    });
-                    this.newToDo.testo = "";
+                if (this.newToDo.trim().length > 0) {
+                    // this.toDoList.push({
+                    //     testo: this.newToDo.testo,
+                    //     completed: false,
+                    // });
+                    let newToDoObject = {
+                        testo: this.newToDo,
+                        completed: false,
+                    };
+                    this.toDoList.push(newToDoObject);
+
+                    this.newToDo = "";
                 }
+            },
+            toogleCompleted: function(indexToUpdate) {
+                console.log(this.toDoList[indexToUpdate]);
+
+                // if(this.toDoList[indexToUpdate].completed == false) {
+                //     this.toDoList[indexToUpdate].completed = false;
+                // } else {
+                //     this.toDoList[indexToUpdate].completed = false;
+                // };
+
+                this.toDoList[indexToUpdate].completed = !this.toDoList[indexToUpdate].completed;
             },
             
         }

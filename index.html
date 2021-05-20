@@ -17,13 +17,13 @@
     <div id="root">
         <div>
             <!-- <h2>{{newToDo.testo}}</h2> -->
-            <input type="text" placeholder="Inserisci un nuovo toDo" v-model="newToDo.testo" @keydown.enter="addToDo">
+            <input type="text" placeholder="Inserisci un nuovo toDo" v-model="newToDo" @keydown.enter="addToDo">
             <button @click="addToDo">Aggiungi</button>
         </div>
 
         <ul v-if="toDoList.length > 0">
             <li v-for="(toDo, index) in toDoList">
-                {{ index }} - {{ toDo.testo }}
+                <span @click="toogleCompleted(index)" :class="(toDo.completed == true) ? 'completed' : '' ">{{ toDo.testo }}</span>
                 <i class="fas fa-times-circle" @click="removeToDo(index)"></i>
             </li>
         </ul>
